@@ -1,2 +1,3 @@
 # towerparse
-Tower Parse: Low-Resource Dependency Parsing via Hierarchical Source Selection
+TowerParse: State-of-the-art Massively Multilingual Dependency Parsing
+

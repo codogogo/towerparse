@@ -9,7 +9,7 @@ def print_parsed(parsed_sents):
         print()
 
 # Arabic (1 sentence)
-parser = tower.TowerParser("/work-ceph/gglavas/data/multiparse/deploy/UD_Arabic-PUD")
+parser = tower.TowerParser("tower_models/UD_Arabic-PUD")
 
 sentences_ar = [["سوريا", ":", "تعديل", "وزاري", "واسع", "يشمل", "8", "حقائب"]]
 
@@ -18,7 +18,7 @@ print_parsed(parsed_ar)
 print()
 
 # German (2 sentences)
-parser.load_model("/work-ceph/gglavas/data/multiparse/deploy/UD_German-GSD")
+parser.load_model("tower_models/UD_German-GSD")
 
 sentences_de = [["Wie", "stark", "ist", "das", "Coronavirus", "in", "der", "Stadt", "verbreitet", "?"], 
                ["Ein", "Überblick", "über", "die", "aktuelle", "Zahl", "der", "Infizierten", "und", "der", "aktuelle", "Inzidenzwert", "für", "München", "."]]
@@ -28,7 +28,7 @@ print_parsed(parsed_de)
 print()
 
 # Croatian (3 sentences)
-parser.load_model("/work-ceph/gglavas/data/multiparse/deploy/UD_Croatian-SET")
+parser.load_model("tower_models/UD_Croatian-SET")
 
 sentences_hr = [["Hrvatska", "je", "ponudila", "Europskoj", "službi", "za", "vanjsko", "djelovanje", "prihvat", "afganistanskog", "osoblja", "Europske", "unije", "najavio", "je", "ministar", "vanjskih", "i", "europskih", "poslova", "Gordan", "Grlić", "Radman", "komentirajući", "sinoćnji", "sastanak", "ministara", "vanjskih", "poslova", "."],
                 ["Navedene", "osobe", "prošle", "su", "potrebne", "sigurnosne", "provjere", "," , "kao", "i", "natječaje", "za", "rad", "u", "institucijama", "."], 
@@ -39,9 +39,9 @@ print_parsed(parsed_hr)
 print()
 
 # English (940 sentences, loaded from a file)
-parser.load_model("/work-ceph/gglavas/data/multiparse/deploy/UD_English-EWT")
+parser.load_model("tower_models/UD_English-EWT")
 
-sentences_en = [list(l.split()) for l in list(codecs.open("/work/gglavas/data/ud-treebanks-v2.5/UD_English-EWT/sents_tokenized.en.txt", "r", 
+sentences_en = [list(l.split()) for l in list(codecs.open("/sents_tokenized.en.txt", "r", 
                                                           encoding = 'utf8', errors = 'replace').readlines())]
 
 parsed_en = parser.parse("en", sentences_en, batch_size=128)
